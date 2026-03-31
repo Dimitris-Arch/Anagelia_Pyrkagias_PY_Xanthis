@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,6 +84,24 @@
       font-weight: 600;
       text-align: center;
     }
+
+    .youtube-embed {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #000;
+    }
+
+    .youtube-embed iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
 </style>
 </head>
 <body>
@@ -91,7 +110,7 @@
     5 κουμπιά συμβάντων (αναπαραγωγη TTS Google - MP3 - TTS Google), relays για φώτα/ενισχυτή.
 	Πατώντας το άναλογο κουμπί(Παροχή βοηθείας,αστικη,δασική πυρκαγιά,τροχαίο) ενεργοποιείται ήχος με φωνητική ανακοίνωση.
 	Ενεργοποιούνται 2 relay.Το Πρώτο ανάβει άμμεσα τα φώτα του κτηρίου ως προειδοποίηση ,το αναπαράγει τον ανάλογο ήχο ειδοποίησης.
-	1 Κουμπι διαφορετικού χρώματος για ενεργοποίηση ήχου ανακοίνωσης με μικρόφωνο</p>
+	1 Κουμπι διαφορετικού χρώματος για ενεργοποίηση ήχου ανακοίνωσης με μικρόφωνο	</p>
 
 
   <section class="card">
@@ -118,39 +137,35 @@
         </div>
       </div>
 
-      <div class="media-grid">
-        <article class="media-card">
-          <video controls preload="metadata">
-            <source src="1.mp4" type="video/mp4">
-            Το πρόγραμμα περιήγησης δεν υποστηρίζει αναπαραγωγή βίντεο.
-          </video>
-          <div class="media-caption">Βίντεο 1 — 1.mp4</div>
-        </article>
+     <div class="media-grid">
+  <article class="media-card">
+    <div class="youtube-embed">
+      <iframe src="https://www.youtube.com/embed/I4eTrnocLAw" title="Βίντεο 1 — YouTube Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="media-caption">Βίντεο 1 — YouTube Short</div>
+  </article>
 
-        <article class="media-card">
-          <video controls preload="metadata">
-            <source src="2.mp4" type="video/mp4">
-            Το πρόγραμμα περιήγησης δεν υποστηρίζει αναπαραγωγή βίντεο.
-          </video>
-          <div class="media-caption">Βίντεο 2 — 2.mp4</div>
-        </article>
+  <article class="media-card">
+    <div class="youtube-embed">
+      <iframe src="https://www.youtube.com/embed/vzydBrNXdUI" title="Βίντεο 2 — YouTube Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="media-caption">Βίντεο 2 — YouTube Short</div>
+  </article>
 
-        <article class="media-card">
-          <video controls preload="metadata">
-            <source src="3.mp4" type="video/mp4">
-            Το πρόγραμμα περιήγησης δεν υποστηρίζει αναπαραγωγή βίντεο.
-          </video>
-          <div class="media-caption">Βίντεο 3 — 3.mp4</div>
-        </article>
+  <article class="media-card">
+    <div class="youtube-embed">
+      <iframe src="https://www.youtube.com/embed/TpAWm0VhCT8" title="Βίντεο 3 — YouTube Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="media-caption">Βίντεο 3 — YouTube Short</div>
+  </article>
 
-        <article class="media-card">
-          <video controls preload="metadata">
-            <source src="4.mp4" type="video/mp4">
-            Το πρόγραμμα περιήγησης δεν υποστηρίζει αναπαραγωγή βίντεο.
-          </video>
-          <div class="media-caption">Βίντεο 4 — 4.mp4</div>
-        </article>
-      </div>
+  <article class="media-card">
+    <div class="youtube-embed">
+      <iframe src="https://www.youtube.com/embed/5G3X4Q5f5K0" title="Βίντεο 4 — YouTube Short" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="media-caption">Βίντεο 4 — YouTube Short</div>
+  </article>
+</div>
     </div>
   </section>
 
