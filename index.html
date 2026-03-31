@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ΠΥ Ξάνθης Tutorial - Ψηφιακή Αναγγελία</title>
+ <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 40px; line-height: 1.6; color: #333; background: #f9f9f9; }
+    h1 { color: #d32f2f; text-align: center; font-size: 28px; border-bottom: 3px solid #d32f2f; padding-bottom: 10px; }
+    h2 { color: #1976d2; font-size: 22px; margin-top: 30px; }
+    h3 { color: #388e3c; font-size: 18px; }
+    table { border-collapse: collapse; width: 100%; margin: 20px 0; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+    th { background: #1976d2; color: white; font-weight: bold; }
+    tr:nth-child(even) { background: #f8f9fa; }
+    pre { background: #f5f5f5; padding: 15px; border-radius: 5px; overflow-x: auto; font-family: 'Courier New', monospace; }
+    code { background: #e8f4fd; padding: 2px 5px; border-radius: 3px; }
+    .warning { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0; }
+    .success { background: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; }
+    .code-section { background: #f8f9fa; border-left: 4px solid #1976d2; padding: 20px; margin: 20px 0; }
+    .note { background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; margin: 15px 0; }
+
+    .media-gallery {
+      margin: 18px 0 6px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .media-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+      align-items: start;
+    }
+
+    .media-photo {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.06);
+      height: 420px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .media-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      background: #f3f4f6;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .media-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.06);
+    }
+
+    .media-card video {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #000;
+    }
+
+    .media-caption {
+      margin: 10px 2px 2px;
+      font-size: 14px;
+      color: #4b5563;
+      font-weight: 600;
+      text-align: center;
+    }
+</style>
+</head>
+<body>
+    <h1>🚨 Tutorial: Ψηφιακή Αναγγελία Συμβάντων ΠΥ Ξάνθης</h1>
+    <p><strong>Από κουδούνι σε φωνητική αναγγελία με Raspberry Pi</strong><br>
+    5 κουμπιά συμβάντων (αναπαραγωγη TTS Google - MP3 - TTS Google), relays για φώτα/ενισχυτή.
+	Πατώντας το άναλογο κουμπί(Παροχή βοηθείας,αστικη,δασική πυρκαγιά,τροχαίο) ενεργοποιείται ήχος με φωνητική ανακοίνωση.
+	Ενεργοποιούνται 2 relay.Το Πρώτο ανάβει άμμεσα τα φώτα του κτηρίου ως προειδοποίηση ,το αναπαράγει τον ανάλογο ήχο ειδοποίησης.
+	1 Κουμπι διαφορετικού χρώματος για ενεργοποίηση ήχου ανακοίνωσης με μικρόφωνο</p>
+
+
+  <section class="card">
+    <h2>📷 Φωτογραφία & Βίντεο</h2>
+    <p class="small">Οι φωτογραφίες εμφανίζονται σε μικρότερο μέγεθος και ακολουθούν τα βίντεο του project.</p>
+
+    <div class="media-gallery">
+      <div class="media-photo-grid">
+        <div class="media-photo">
+          <img src="1.jpg" alt="Φωτογραφία εγκατάστασης 1" loading="lazy">
+          <div class="media-caption">1.jpg</div>
+        </div>
+        <div class="media-photo">
+          <img src="2.jpg" alt="Φωτογραφία εγκατάστασης 2" loading="lazy">
+          <div class="media-caption">2.jpg</div>
+        </div>
+        <div class="media-photo">
+          <img src="3.jpg" alt="Φωτογραφία εγκατάστασης 3" loading="lazy">
+          <div class="media-caption">3.jpg</div>
+        </div>
+        <div class="media-photo">
+          <img src="4.jpg" alt="Φωτογραφία εγκατάστασης 4" loading="lazy">
+          <div class="media-caption">4.jpg</div>
+        </div>
+      </div>
+
+      <div class="media-grid">
+        <article class="media-card">
+          <video controls preload="metadata">
+            <source src="1.mp4" type="video/mp4">
+            Το πρόγραμμα περιήγησης δεν υποστηρίζει αναπαραγωγή βίντεο.
+          </video>
+          <div class="media-caption">Βίντεο 1 — 1.mp4</div>
+        </article>
+
+        <article class="media-card">
+          <video controls preload="metadata">
+            <source src="2.mp4" type="video/mp4">
+            Το πρόγραμμα περιήγησης δεν υποστηρίζει αναπαραγωγή βίντεο.
+          </video>
+          <div class="media-caption">Βίντεο 2 — 2.mp4</div>
+        </article>
+
+        <article class="media-card">
+          <video controls preload="metadata">
+            <source src="3.mp4" type="video/mp4">
+            Το πρόγραμμα περιήγησης δεν υποστηρίζει αναπαραγωγή βίντεο.
+          </video>
+          <div class="media-caption">Βίντεο 3 — 3.mp4</div>
+        </article>
+
+        <article class="media-card">
+          <video controls preload="metadata">
+            <source src="4.mp4" type="video/mp4">
+            Το πρόγραμμα περιήγησης δεν υποστηρίζει αναπαραγωγή βίντεο.
+          </video>
+          <div class="media-caption">Βίντεο 4 — 4.mp4</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <h2>📦 Υλικά (Κόστος χωρίς ενισχυτή ~€100)</h2>
+    <ul>
+        <li><strong><a href="https://www.skroutz.gr/s/19212716/Raspberry-Pi-4-Model-B-4GB.html">Raspberry Pi 4B , 89€ </a></li></strong></li>
+        <li><strong><a href="https://www.skroutz.gr/c/50/kartes-hxou/m/28561/Ugreen/f/437650/USB.html?keyphrase=cm129">USB Audio Ugreen CM129, 10€ </a></li></strong></li>
+        <li><strong>5 Momentary buttons</strong> (€3)</li>
+        <li><strong>3 LEDs + resistors 220Ω</strong> (€2)</li>
+        <li><strong><a href="https://www.skroutz.gr/s/35414098/Optum-Relay-Module-2-Channel-5V.html">2CH Relay module + octocoupler, 3€ </a></li></strong></li>
+        <li><strong>Breadboard + jumper wires</strong> (€5)</li>
+		<li><strong>Ενισχυτής 100V + ηχεία</strong> </li>
+    </ul>
+    <div class="note">
+        <strong>📢 Σημείωση Ενισχυτή:</strong> Λόγω μεγάλων αποστάσεων απο ηχείο σε ηχείο, 
+        απαιτείται <strong>ενισχυτής 100V line</strong> (π.χ. PRM120 120W) + ηχεία 100V (BV40V). 
+        Ισχύς ανάλογα με μέγεθος κτηρίου/αριθμό ηχείων.Στο συγκεκριμένο project εγκαταστάθηκε ο <strong><a href="https://www.emimikos.gr/SET-PA-AUDIO-272-Public-Address-100V-PRM120-8X-BV40V-W/">PRM120-8X-BV40V-W με 10 ηχεία και συνολο 180 μέτρα 16 AWG καλώδιο </a></li></strong></li> 
+    </div>
+
+    <h2>🔌 Σύνδεση Hardware (BCM Mode)</h2>
+    <div class="warning">⚠️ <strong>Relays jumper OFF</strong> → external 5V PSU για JD-VCC!</div>
+
+    <table>
+        <tr><th>BCM Pin</th><th>Στοιχείο</th><th>Χρώμα/Signal</th></tr>
+        <tr><td>5</td><td>Αστική πυρκαγιά</td><td>Κόκκινο btn</td></tr>
+        <tr><td>6</td><td>Παροχή βοήθειας</td><td>Πράσινο btn</td></tr>
+        <tr><td>13</td><td>Τροχαίο</td><td>Κίτρινο btn</td></tr>
+        <tr><td>19</td><td>Δασική πυρκαγιά</td><td>Καφέ btn</td></tr>
+        <tr><td>26</td><td>Mic / Manual</td><td>Μαύρο btn</td></tr>
+        <tr><td>17</td><td>Relay1 (φώτα)</td><td>COM→φώτα, NO</td></tr>
+        <tr><td>27</td><td>Relay2 (flash)</td><td>COM→προειδοπ.</td></tr>
+        <tr><td>16</td><td>LED κόκκινο</td><td>Button press</td></tr>
+        <tr><td>20</td><td>LED μπλε</td><td>Manual ON</td></tr>
+        <tr><td>12</td><td>LED πράσινο</td><td>Running OK</td></tr>
+        <tr><td>GND</td><td>Κοινό</td><td>-</td></tr>
+        <tr><td>3.3V</td><td>Pull-up buttons</td><td>-</td></tr>
+    </table>
+
+    <h2>💻 Εγκατάσταση Software</h2>
+    <ol>
+        <li><strong>Flash Raspberry Pi OS Trixie 32-bit</strong> (Raspberry Pi Imager)</li>
+        <li><code>sudo apt update &amp;&amp; sudo apt install python3-pip mpg123</code></li>
+        <li><code>pip3 install RPi.GPIO gtts</code></li>
+        <li>Copy <strong>koudounia.py + mp3 files</strong> → <code>/home/pi</code></li>
+        <li>Test audio: <code>alsamixer</code> (Speaker 100%), <code>mpg123 astiki.mp3</code></li>
+    </ol>
+
+    <h2>📜 Περιγραφή Κώδικα koudounia.py</h2>
+    <div class="code-section">
+        <h3>🔊 Volume Control</h3>
+        <p><code>set_volume_93()</code>: <strong>93% Speaker/Mic</strong> με amixer πριν κάθε ήχο (σταθερή ένταση).</p>
+
+        <h3>⚙️ GPIO Setup</h3>
+        <ul>
+            <li>Buttons: INPUT pull-up (HIGH=ανεκτικό)</li>
+            <li>Relays/LEDs: OUTPUT HIGH=OFF</li>
+            <li>LED running (12): Πράσινο = Ready</li>
+        </ul>
+
+        <h3>⏰ Scheduler</h3>
+        <p><code>DAY_START=7:30, DAY_END=22:15</code>: Relay1 auto ON/OFF, thread κάθε 30s.</p>
+
+        <h3>🐕 Watchdog</h3>
+        <p>Thread: <code>/dev/watchdog</code> '1' κάθε 10s → anti-crash.</p>
+
+        <h3>🔈 Ήχος</h3>
+        <ul>
+            <li><code>play_tts_mp3_tts()</code>: TTS ("Αστική Πυρκαγιά") + mp3 + TTS repeat</li>
+            <li><code>gTTS(lang="el")</code>: On-demand MP3</li>
+            <li>mpg123 quiet playback</li>
+        </ul>
+
+        <h3>🚨 Alarm Sequence</h3>
+        <ol>
+            <li>LED κόκκινο ON</li>
+            <li>Relay1 άμεσο ON (αγνοεί manual/daytime)</li>
+            <li>Relay2 flash 0.5s</li>
+            <li>Delay: <strong>4s μέρα / 5s νύχτα</strong> (ενισχυτής warmup)</li>
+            <li>Ήχος → LED OFF</li>
+        </ol>
+
+        <h3>🎤 Mic Button (26)</h3>
+        <ul>
+            <li>Short: mic.mp3</li>
+            <li>Long 2s+: Toggle manual relay1 (μπλε LED)</li>
+        </ul>
+
+        <h3>🔄 Main Loop</h3>
+        <p>Poll buttons 50ms, debounce 0.3s → <strong>ΚΑΘΕ πάτημα δουλεύει!</strong></p>
+    </div>
+
+    <h2>⚙️ Autostart Service</h2>
+    <pre><code>sudo nano /etc/systemd/system/koudounia.service
+[Unit]
+Description=ΠΥ Ξάνθης Koudounia Alarm
+After=network.target sound.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/koudounia.py
+WorkingDirectory=/home/pi
+Restart=always
+RestartSec=5
+User=pi
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+    <pre><code>sudo systemctl daemon-reload
+sudo systemctl enable koudounia
+sudo systemctl start koudounia
+journalctl -u koudounia -f</code></pre>
+
+    <h2>🎯 Λειτουργία</h2>
+    <ul>
+        <li><strong>Κουμπί συμβάν:</strong> Flash relay2 → relay1 ON → delay → TTS + mp3 + repeat</li>
+        <li><strong>Mic short:</strong> mic.mp3</li>
+        <li><strong>Mic long (2s):</strong> Toggle manual relay1 (μπλε LED)</li>
+        <li><strong>Scheduler:</strong> Relay1 ON 7:30-22:15</li>
+        <li><strong>LEDs:</strong> Κόκκινο=press, Μπλε=manual, Πράσινο=ready</li>
+    </ul>
+    <div class="success">✅ <strong>Boot → Auto start!</strong></div>
+
+    <h2>🔧 Troubleshooting</h2>
+    <div class="warning">
+        <p><strong>Γιατί relay1 16 ώρες/ημέρα (07:00-22:00):</strong></p>
+        <p>Οι απλοί ενισχυτές, ακόμα και οι «επαγγελματικοί» όπως ο PRM120, αναγράφουν στο manual ότι <strong>δεν προορίζονται για 24/7 ασταμάτητη λειτουργία</strong>.</p>
+        <p>Αρχική ιδέα: ON/Οff η τροφοδοσια του ενισχυτή με κάθε αναγγελία → Πρόβλημα με warmup του ενισυχτη,οι ήχοι κοβόταν(θελει 3-5s) για να αναψει ο ενισχυτής.</p>
+        <p><strong>Λύση:</strong> ON 16 ώρες → άμεσοι ήχοι. Νύχτα: εδωσα 5s delay για την αναπαραγωγη του ήχου (warmup χρόνος).</p>
+        <p>Μελλοντική βελτίωση: Phone Ring detector → προ-ενεργοποίηση ενισχυτή μολις "χτυπήσει" το 199 ή το σταθερό.</p>
+    </div>
+
+    <h2>🚀Μελλοντικές Επεκτάσεις</h2>
+    <ul>
+        <li><strong>📞 Ring Detector 199 (GPIO18)</strong>: PC817 Optocoupler Module (€1.78)<br>
+            <strong>Λειτουργία:</strong> Όταν χτυπάει το τηλέφωνο 199 → <strong>άμεσα relay1 ON (ενισχυτής)</strong> +10s warmup.<br>
+            Ο τελευστής πατάει κουμπί συμβάντος → ήχος έτοιμος!<br>
+            Σύνδεση: RING ───[10kΩ]───IN+ / GPIO18=0 (RING!)<br>
+            <a href="https://a.aliexpress.com/_EvNQ8jI">AliExpress PC817</a></li>
+        <li><strong>Alerts:</strong> Telegram bot / email</li>
+        <li><strong>Dashboard:</strong> Flask webapp logs/stats</li>
+		<li><strong>Push Notification alerts!!!:</strong> Μηνυμα σε εφαρμογή κινητού ήτε βρίσκεται εντος ήτε εκτός κτηρίου παράλληλα με την ηχητικη ειδοποίηση </li>
+    </ul>
+
+    <p style="text-align: center; font-size: 18px; color: #1976d2; margin-top: 40px;">
+        <strong>Δημήτρης Γεωργιάδης</strong>
+    </p>
+</body>
+</html>
